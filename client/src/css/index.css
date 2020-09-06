@@ -1,0 +1,95 @@
+body{
+    height: 100vh;
+    background-color: #F5F5F5 !important;
+}
+
+a{
+    color: black !important;
+    text-decoration: none;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F5F5F5;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+}
+.container-bike {
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .row-bike{
+      display: flex;
+      justify-content: space-between;
+      
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+
+.row.list-group-item{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+}
+.row.list-group-item.add{
+    display: flex;
+    background-color: #E9EAEE;
+}
+
+.bike-p{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.lists{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.form{
+    width: 50%;
+}
+
+ .btn.btn-primary{
+    margin: 5px;
+    width: 105.53px;
+}
+.btn.btn-danger{
+    margin: 5px;
+    width: 105.53px;
+} 
+.block-button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.btn-secondary.custom-button {
+    width: 100px;
+    height: 50px;
+    margin-left: 10px;
+  }
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  

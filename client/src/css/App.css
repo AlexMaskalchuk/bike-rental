@@ -1,0 +1,7 @@
+.row{
+  display: flex;
+}
+.label-input{
+  display: flex;
+  flex-direction: column;
+}
