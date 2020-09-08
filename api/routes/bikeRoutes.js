@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const schedule = require('node-schedule');
-const bikes =[];
 const Schema = mongoose.Schema;
 const bikeScheme = new Schema(
   {
@@ -71,8 +70,6 @@ module.exports = function (app, db) {
     }else{
       res.send(bike);
     }
-    
-   
   });
 
   app.get('/:id', (req, res) => {

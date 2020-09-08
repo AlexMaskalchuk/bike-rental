@@ -48,6 +48,9 @@ a {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.row.list-group-item.add {
+    background-color: #E9EAEE;
+  }
 
 .bike-p {
   display: flex;
@@ -78,12 +81,10 @@ a {
       }
 }
 
-@media (min-width: 1050px){ .submit-button {
+.submit-button {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
-}
 }
 .btn-secondary.custom-button {
   width: 100px;

@@ -1,53 +1,30 @@
 import React from "react";
-import cn from 'classnames';
+import cn from "classnames";
 import { addBike } from "../requests/addBike";
 
 class AddRent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      type: "",
-      price: "",
-      countAvailable: 0,
-      isRented: false,
-      touched: false,
-      classInputName: "form-control",
-      classInputType: "form-control",
-      classInputPrice: "form-control",
-    };
-  }
+  state = {
+    name: "",
+    type: "",
+    price: "",
+    classInputName: "form-control",
+    classInputType: "form-control",
+    classInputPrice: "form-control",
+  };
 
-  validateName = () => {
-    const { name } = this.state;
-    !name
-      ? this.setState({ classInputName: "form-control danger" })
-      : this.setState({ classInputName: "form-control" });
-  };
-  validateType = () => {
-    const { type } = this.state;
-    console.log(type);
-    !type
-      ? this.setState({ classInputType: "form-control danger" })
-      : this.setState({ classInputType: "form-control" });
-  };
-  validatePrice = () => {
-    const { price } = this.state;
-    console.log(price);
-    !price
-      ? this.setState({ classInputPrice: "form-control danger" })
-      : this.setState({ classInputPrice: "form-control" });
+  validateField = (className, field) => {
+    this.setState({ [className]: cn("form-control", { danger: !field }) });
   };
 
   handleSubmit = async (event) => {
     event.preventDefault();
     const { name, type, price } = this.state;
+    this.validateForm();
     if (name && type && price) {
       await addBike(name, type, price);
       this.props.getBikes();
       this.setState({ name: "", type: "", price: "" });
     }
-    this.validateForm();
   };
 
   nameChange = (event) => {
@@ -69,15 +46,11 @@ class AddRent extends React.Component {
 
   validateForm = () => {
     const { name, type, price } = this.state;
-    if (!name) {
-      this.setState({ classInputName: "form-control danger" });
-    }
-    if (!type) {
-      this.setState({ classInputType: "form-control danger" });
-    }
-    if (!price) {
-      this.setState({ classInputPrice: "form-control danger" });
-    }
+    this.setState({
+      classInputName: cn("form-control", { danger: !name }),
+      classInputType: cn("form-control", { danger: !type }),
+      classInputPrice: cn("form-control", { danger: !price }),
+    });
   };
 
   render() {
@@ -85,7 +58,6 @@ class AddRent extends React.Component {
       name,
       type,
       price,
-      touched,
       classInputName,
       classInputType,
       classInputPrice,
@@ -100,7 +72,7 @@ class AddRent extends React.Component {
               value={name}
               className={classInputName}
               onChange={this.nameChange}
-              onBlur={this.validateName}
+              onBlur={() => this.validateField("classInputName", name)}
             ></input>
           </div>
           <div className="label-input">
@@ -111,10 +83,9 @@ class AddRent extends React.Component {
                 value={type}
                 className={classInputType}
                 onChange={this.typeChange}
-                onBlur={this.validateType}
+                onBlur={() => this.validateField("classInputType", type)}
               >
-                <option hidden selected value>
-                  {" "}
+                <option hidden defaultValue>
                   {type}
                 </option>
                 <option>Road</option>
@@ -130,14 +101,11 @@ class AddRent extends React.Component {
               value={price}
               className={classInputPrice}
               onChange={this.priceChange}
-              onBlur={this.validatePrice}
+              onBlur={() => this.validateField("classInputPrice", price)}
             ></input>
           </div>
           <div className="submit-button">
-            <button
-              className="btn btn-success"
-              type="submit"
-            >
+            <button className="btn btn-success" type="submit">
               Submit rent
             </button>
           </div>

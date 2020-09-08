@@ -1,24 +1,16 @@
-const count = (bikes) => {
-  let tmpBikes = bikes.filter((item) => {
-    return item.isRented !== true;
-  });
-  return tmpBikes.length;
-};
-
-const total = (bikes) => {
+const getAvailableTotal = (bikes) => {
   let total = 0;
-  bikes.map((item) => {
-    if (item.isRented) {
-      total += item.price;
-    }
-  });
+  bikes.forEach(({ price }) => (total += price));
   return total;
 };
 
 const timeRent = (date) => {
+  if (!date) {
+    return "";
+  }
   const dateStart = new Date(date);
   const dateNow = new Date();
   const duration = dateNow - dateStart;
   return parseInt(duration / (1000 * 60 * 60));
 };
-export { count, total, timeRent };
+export { getAvailableTotal, timeRent };
