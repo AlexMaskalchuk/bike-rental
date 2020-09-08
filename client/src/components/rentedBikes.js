@@ -3,6 +3,8 @@ import { printBike } from "./printBike";
 import { total } from "../functions/considerAvailable";
 
 class RentedBikes extends React.Component {
+
+
   checkBikes = (bikes) => {
     const bike = bikes.find((item) => {
         return item.isRented === true;
@@ -11,7 +13,7 @@ class RentedBikes extends React.Component {
   };
 
   render() {
-    const { bikes, cancelRent } = this.props;
+    const { bikes, addOrCancelRent } = this.props;
     return (
       <div id="rent" className="list-group">
         {this.checkBikes(bikes) ? (
@@ -19,7 +21,6 @@ class RentedBikes extends React.Component {
             <div></div>
         )}   
         {bikes.map(({ _id, name, type, price, isRented, date }) => {
-          console.log(name);
           if (isRented) {
             return printBike(
               _id,
@@ -28,7 +29,7 @@ class RentedBikes extends React.Component {
               price,
               isRented,
               date,
-              cancelRent
+              addOrCancelRent
             );
           }
         })}

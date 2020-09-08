@@ -1,21 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 const port = 9000;
 
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-require("./routes/note_routes")(app, {});
+require("./routes/bikeRoutes")(app, {});
 
 async function start() {
   try {
     await mongoose.connect(
-      "mongodb+srv://Alex:Alex@cluster0.usjxd.mongodb.net/bike-rental",
+      " mongodb://127.0.0.1:27017",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

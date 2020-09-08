@@ -19,6 +19,6 @@ const timeRent = (date) => {
   const dateStart = new Date(date);
   const dateNow = new Date();
   const duration = dateNow - dateStart;
-  return parseInt((duration / (1000 * 60)));
+  return parseInt(duration / (1000 * 60 * 60));
 };
 export { count, total, timeRent };

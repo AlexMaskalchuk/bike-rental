@@ -3,7 +3,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { timeRent } from "../functions/considerAvailable.js";
 
-class Note extends React.Component {
+class Bike extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,21 +13,17 @@ class Note extends React.Component {
 
   async componentDidMount() {
     let response = await fetch(
-      `http://localhost:9000/notes/${this.props.match.params.id}`,
+      `http://localhost:9000/${this.props.match.params.id}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       }
     );
     let bike = await response.json();
+    console.log(bike);
     this.setState({ bike: bike });
   }
-  timeRent = (date) => {
-    const dateStart = new Date(date);
-    const dateNow = new Date();
-    const duration = dateNow - dateStart;
-    return parseInt((duration / (1000 * 60)) % 60);
-  };
+
 
   render() {
     const { name, type, price, date } = this.state.bike;
@@ -37,7 +33,7 @@ class Note extends React.Component {
           <div className="bike-p">
             {" "}
             <p>
-              {name} / {type} / {price} Rent time {this.timeRent(date)} hours
+              {name} / {type} / {price} Rent time {timeRent(date)} hours
             </p>
           </div>
 
@@ -51,4 +47,4 @@ class Note extends React.Component {
     );
   }
 }
-export default Note;
+export default Bike;

@@ -4,6 +4,14 @@ import { count } from '../functions/considerAvailable';
 import { render } from "@testing-library/react";
 
 class AvailableBikes extends React.Component {
+
+  remove = async (id) => {
+    let response = await fetch(`http://localhost:9000/${id}`, {
+      method: "DELETE",
+    });
+    this.props.callApi();
+  };
+
   checkBikes = (bikes) => {
     const bike = bikes.find((item) => {
       return !item.isRented;
@@ -12,7 +20,7 @@ class AvailableBikes extends React.Component {
   };
 
   render() {
-    const { bikes, cancelRent, remove } = this.props;
+    const { bikes, addOrCancelRent } = this.props;
     return (
       <div id="ava" className="list-group">
            {this.checkBikes(bikes) ? (
@@ -28,8 +36,8 @@ class AvailableBikes extends React.Component {
               price,
               isRented,
               date,
-              cancelRent,
-              remove
+              addOrCancelRent,
+              this.remove
             );
           }
         })}

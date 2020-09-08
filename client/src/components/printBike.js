@@ -9,7 +9,7 @@ const printBike = (
   price,
   isRented,
   date,
-  cancelRent,
+  addOrCancelRent,
   remove
 ) => {
   return (
@@ -27,7 +27,7 @@ const printBike = (
           <div className='button'>
           <button
             className="btn btn-primary"
-            onClick={() => cancelRent(_id, !isRented)}
+            onClick={() => addOrCancelRent(_id, !isRented)}
           >
             Rent
           </button>
@@ -42,7 +42,7 @@ const printBike = (
         <div className='button'>
         <button
           className="btn btn-danger"
-          onClick={() => cancelRent(_id, !isRented)}
+          onClick={() => addOrCancelRent(_id, !isRented)}
         >
           Cancel rent
         </button>
