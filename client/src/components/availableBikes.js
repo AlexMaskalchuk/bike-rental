@@ -1,13 +1,13 @@
-import React from "react";
-import { printBike } from "./printBike";
+import React from 'react';
+import { printBike } from './printBike';
 import { count } from '../functions/considerAvailable';
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react';
 
 class AvailableBikes extends React.Component {
 
   remove = async (id) => {
     let response = await fetch(`http://localhost:9000/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
     this.props.callApi();
   };
@@ -22,7 +22,7 @@ class AvailableBikes extends React.Component {
   render() {
     const { bikes, addOrCancelRent } = this.props;
     return (
-      <div id="ava" className="list-group">
+      <div id='ava' className='list-group'>
            {this.checkBikes(bikes) ? (
         <h4> 🚲 Available Bicycles ({count(bikes)})</h4> ):(
             <div></div>

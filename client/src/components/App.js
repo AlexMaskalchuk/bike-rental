@@ -1,7 +1,7 @@
-import React from "react";
-import AddRent from "./AddRent";
-import RentedBikes from "./RentedBikes";
-import AvailableBikes from "./AvailableBikes";
+import React from 'react';
+import AddRent from './AddRent';
+import RentedBikes from './RentedBikes';
+import AvailableBikes from './AvailableBikes';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,9 +12,9 @@ class App extends React.Component {
   }
 
   callApi = async () => {
-    let response = await fetch("http://localhost:9000", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+    let response = await fetch('http://localhost:9000', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
     });
     let bikes = await response.json();
     console.log(bikes);
@@ -33,8 +33,8 @@ class App extends React.Component {
     });
     const date = new Date();
     let response = await fetch(`http://localhost:9000/${bike._id}`, {
-      method: "PUT",
-      headers: new Headers({ "Content-Type": "application/json" }),
+      method: 'PUT',
+      headers: new Headers({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({
         name: bike.name,
         type: bike.type,
@@ -49,16 +49,16 @@ class App extends React.Component {
   render() {
     const { bikes } = this.state;
     return (
-      <div className="main">
+      <div className='main'>
         <br />
-        <div className="form">
+        <div className='form'>
           <h3>Awesome Bike Rental</h3>
           <br />
           <h4> 🤑 Create new rent</h4>
           <AddRent callApi={this.callApi} />
         </div>
         <br />
-        <div className="lists">
+        <div className='lists'>
           <RentedBikes bikes={bikes} addOrCancelRent={this.addOrCancelRent} />
           <br />
           <AvailableBikes

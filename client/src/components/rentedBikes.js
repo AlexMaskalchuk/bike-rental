@@ -1,6 +1,6 @@
-import React from "react";
-import { printBike } from "./printBike";
-import { total } from "../functions/considerAvailable";
+import React from 'react';
+import { printBike } from './printBike';
+import { total } from '../functions/considerAvailable';
 
 class RentedBikes extends React.Component {
 
@@ -15,7 +15,7 @@ class RentedBikes extends React.Component {
   render() {
     const { bikes, addOrCancelRent } = this.props;
     return (
-      <div id="rent" className="list-group">
+      <div id='rent' className='list-group'>
         {this.checkBikes(bikes) ? (
         <h4> 🤩  Rented Bicycles ({`$` + total(bikes)})</h4> ):(
             <div></div>

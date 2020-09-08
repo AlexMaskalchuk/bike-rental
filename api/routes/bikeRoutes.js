@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const schedule = require("node-schedule");
+const mongoose = require('mongoose');
+const schedule = require('node-schedule');
 const bikes =[];
 const Schema = mongoose.Schema;
 const bikeScheme = new Schema(
@@ -13,7 +13,7 @@ const bikeScheme = new Schema(
   },
   { versionKey: false }
 );
-const Bike = mongoose.model("Bike", bikeScheme);
+const Bike = mongoose.model('Bike', bikeScheme);
 
 Date.prototype.addHours = function (h) {
   this.setTime(this.getTime() + h * 60 * 60 * 1000);
@@ -58,7 +58,7 @@ const validateForm = (name, type, price) => {
 
 
 module.exports = function (app, db) {
-  app.post("/", (req, res) => {
+  app.post('/', (req, res) => {
     if (!req.body) return res.sendStatus(400);
     let bike = {};
     const {name, type, price} = req.body;
@@ -75,7 +75,7 @@ module.exports = function (app, db) {
    
   });
 
-  app.get("/:id", (req, res) => {
+  app.get('/:id', (req, res) => {
     const id = req.params.id;
     Bike.findOne({ _id: id }, function (err, bike) {
       if (err) return console.log(err);
@@ -84,14 +84,14 @@ module.exports = function (app, db) {
     });
   });
 
-  app.get("/", (req, res) => {
+  app.get('/', (req, res) => {
     Bike.find({}, function (err, bikes) {
       if (err) return console.log(err);
       res.send(bikes);
     });
   });
 
-  app.delete("/:id", (req, res) => {
+  app.delete('/:id', (req, res) => {
     const id = req.params.id;
     Bike.findByIdAndDelete(id, function (err, bike) {
       if (err) return console.log(err);
@@ -99,7 +99,7 @@ module.exports = function (app, db) {
     });
   });
 
-  app.put("/:id", (req, res) => {
+  app.put('/:id', (req, res) => {
     const filter = { _id: req.params.id };
     let date = null;
     if (!req.body.isRented) {
@@ -109,7 +109,7 @@ module.exports = function (app, db) {
       dateSale.setTime(dateSale.getTime() + 0.1 * 60 * 1000);
       console.log(dateSale);
       const j = schedule.scheduleJob(dateSale, function () {
-        console.log("Ok");
+        console.log('Ok');
         createNewPrice(Bike, filter, true);
       });
     } else {
