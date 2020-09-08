@@ -9,7 +9,7 @@ class AvailableBikes extends React.Component {
     let response = await fetch(`http://localhost:9000/${id}`, {
       method: 'DELETE',
     });
-    this.props.callApi();
+    this.props.getBikes();
   };
 
   checkBikes = (bikes) => {
