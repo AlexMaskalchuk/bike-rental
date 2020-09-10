@@ -1,6 +1,6 @@
 import React from "react";
 import { count } from "../functions/considerAvailable";
-import { PrintBike } from './printBike';
+import { PrintBike } from "./printBike";
 
 const BicyclesTable = (props) =>{
     const { header, bikes, addOrCancelRent, remove } = props;

@@ -3,7 +3,7 @@ import AddRent from "./addRent";
 import { fetchBikes } from "../requests/fetchBikes";
 import { updateRent } from "../requests/updateRent";
 import { BicyclesTable } from "./bicycleStable";
-import { getAvailableTotal } from '../functions/considerAvailable';
+import { getAvailableTotal } from "../functions/considerAvailable";
 
 class App extends React.Component {
   state = {

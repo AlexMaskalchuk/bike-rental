@@ -7,7 +7,7 @@ const PrintBike = ({
   addOrCancelRent,
   remove,
 }) => {
-  const classNameButton = ''
+  const classNameButton = ""
   return (
     <div key={_id} id={_id} className="row list-group-item">
       <div className="bike-p">
@@ -21,10 +21,10 @@ const PrintBike = ({
       <div className="block-button">
         <div className="button">
           <button
-            className={!isRented ? 'btn btn-primary' : 'btn btn-danger'}
+            className={!isRented ? "btn btn-primary" : "btn btn-danger"}
             onClick={() => addOrCancelRent(_id, !isRented)}
           >
-            {isRented ? 'Cancel rent' : 'Rent'}
+            {isRented ? "Cancel rent" : "Rent"}
           </button>
         </div>
         {!isRented && (
