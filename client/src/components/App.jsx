@@ -20,10 +20,11 @@ class App extends React.Component {
   }
 
   remove = async (id) => {
-    await fetch(`http://localhost:9000/${id}`, {
+   const response = await fetch(`http://localhost:9000/${id}`, {
       method: "DELETE",
     });
-    this.getBikes();
+    const bikes = await response.json();
+    this.setState({ bikes });
   };
 
   addOrCancelRent = async (id) => {
@@ -36,7 +37,6 @@ class App extends React.Component {
   render() {
     const { bikes } = this.state;
     const bikesRented = bikes.filter(({ isRented }) => isRented);
-    console.log(bikes);
     const bikesAvailable = bikes.filter(({ isRented }) => !isRented);
     return (
       <div className="main">
@@ -51,7 +51,7 @@ class App extends React.Component {
         <div className="lists">
         
           <BicyclesTable
-            header={<h4> 🤩 Rented Bicycles (${getAvailableTotal(bikesAvailable)})</h4>}
+            header={<h4> 🤩 Rented Bicycles (${getAvailableTotal(bikesRented)})</h4>}
             bikes={bikesRented}
             addOrCancelRent={this.addOrCancelRent}
           />

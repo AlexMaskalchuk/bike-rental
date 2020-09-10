@@ -50,6 +50,7 @@ a {
 }
 .row.list-group-item.add {
     background-color: #E9EAEE;
+    
   }
 
 .bike-p {
@@ -60,10 +61,10 @@ a {
 .lists {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
 }
 .form {
-  width: 40%;
+  width: 45%;
 }
 
 .btn.btn-primary {
