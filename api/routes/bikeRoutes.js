@@ -63,7 +63,7 @@ module.exports = function (app) {
   });
 
   app.get("/:id", (req, res) => {
-    Bike.findOne({ _id: req.params.id }, function (bike) {
+    Bike.findOne({ _id: req.params.id }, function (err, bike) {
       res.send(bike);
     });
   });
